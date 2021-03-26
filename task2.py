@@ -1,4 +1,4 @@
-for x in range(0, 100):
+for x in range(0, 101):
     if x % 3 == 0 and x % 5 == 0:
         print(x, ' FizzBuzz')
     elif x % 3 == 0:
@@ -13,7 +13,7 @@ for x in range(0, 100):
 
 # n = int(input('Введите верхнее значеие диапазона от 0 до '))
 # def add(n):
-#     for x in range(0, n):
+#     for x in range(0, n + 1):
 #         if x % 3 == 0 and x % 5 == 0:
 #             print(x, ' FizzBuzz')
 #         elif x % 3 == 0:
@@ -21,4 +21,4 @@ for x in range(0, 100):
 #         elif x % 5 == 0:
 #             print(x, ' Buzz')
 #
-# print(add(n))
+# add(n)
