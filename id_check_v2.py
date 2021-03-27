@@ -7,25 +7,6 @@ def get_data_by_id(idcode):
     region_num = idcode[7:10]
     chk_num = idcode[10]
 
-    # if gender_num == '1':
-    #     cent_id = '18'
-    #     gend_id = 'Male'
-    # elif gender_num == '2':
-    #     cent_id = '18'
-    #     gend_id = 'Female'
-    # if gender_num == '3':
-    #     cent_id = '19'
-    #     gend_id = 'Male'
-    # elif gender_num == '4':
-    #     cent_id = '19'
-    #     gend_id = 'Female'
-    # if gender_num == '5':
-    #     cent_id = '20'
-    #     gend_id = 'Male'
-    # elif gender_num == '6':
-    #     cent_id = '20'
-    #     gend_id = 'Female'
-
     if int(gender_num) % 2 == 0:
         gend_id = 'Female'
     else:
@@ -67,24 +48,28 @@ def get_data_by_id(idcode):
     elif 651 <= int(region_num) <= 700:
         region_id = 'Lõuna-Eesti haigla (Võru), Põlva haigla'
 
+    print(gender_num, by_num, bm_num, bd_num, region_num, chk_num)
     print('You are ' + gend_id)
     print('You were born on ' + bd_num + '.' + bm_num + '.' + cent_id + by_num)
     print('Region code is ' + region_num + ' - ' + region_id)
+    print('You check number is: ' + chk_num)
     user_menu()
+
 
 def valid_id(idcode):
 
+
     # I astme kaal: 1 2 3 4 5 6 7 8 9 1
-    summ_id_1 = 1 * int(idcode[0]) + 2 * int(idcode[1]) + 3 * int(idcode[2]) + 4 * int(idcode[3]) + 5 * \
-                int(idcode[4]) + 6 * int(idcode[5]) + 7 * int(idcode[6]) + 8 * int(idcode[7]) + 9 * \
-                int(idcode[8]) + 1 * int(idcode[9])
+    summ_id_1 = 1 * int(idcode[0]) + 2 * int(idcode[1]) + 3 * int(idcode[2]) + 4 * int(idcode[3]) + \
+                5 * int(idcode[4]) + 6 * int(idcode[5]) + 7 * int(idcode[6]) + 8 * int(idcode[7]) + \
+                9 * int(idcode[8]) + 1 * int(idcode[9])
     rem_div_1 = summ_id_1 % 11
     val_1 = summ_id_1 - 11 * (summ_id_1 // 11)
 
     # II astme kaal: 3 4 5 6 7 8 9 1 2 3
-    summ_id_2 = 3 * int(idcode[0]) + 4 * int(idcode[1]) + 5 * int(idcode[2]) + 6 * int(idcode[3]) + 7 * \
-                int(idcode[4]) + 8 * int(idcode[5]) + 9 * int(idcode[6]) + 1 * int(idcode[7]) + 2 * \
-                int(idcode[8]) + 3 * int(idcode[9])
+    summ_id_2 = 3 * int(idcode[0]) + 4 * int(idcode[1]) + 5 * int(idcode[2]) + 6 * int(idcode[3]) + \
+                7 * int(idcode[4]) + 8 * int(idcode[5]) + 9 * int(idcode[6]) + 1 * int(idcode[7]) + \
+                2 * int(idcode[8]) + 3 * int(idcode[9])
     rem_div_2 = summ_id_2 % 11
     val_2 = summ_id_2 - 11 * (summ_id_2 // 11)
 
@@ -95,35 +80,46 @@ def valid_id(idcode):
         print('The code was validated!')
     else:
         print('The code did not pass validation!')
+
     user_menu()
 
+
 def user_menu():
-    user_choice = input('Please choose:\n1. Get data by ID code\n2. Check if ID is valid\n3. Exit\n--> ')
+    print(user_id)
+    user_choice = input('Please choose:\n1. Get data by ID code\n2. Check if ID is valid\n'
+                        '3. Enter new ID for check\n4. Exit\n--> ')
     if user_choice == '1':
         get_data_by_id(user_id)
 
     elif user_choice == '2':
         valid_id(user_id)
     elif user_choice == '3':
+        val_len_id()
+        user_menu()
+    elif user_choice == '4':
         quit()
     else:
         print('Choice out of range')
         user_menu()
 
-condition = True
-while condition:
-    try:
-        user_id = input('Please enter ID: ')
-        int(user_id)
-        if len(user_id) != 11:
-            raise UserWarning
-    except UserWarning:
-        if len(user_id) < 11:
-            print('Code is too short')
-        elif len(user_id) > 11:
-            print('Code is too long')
-    except:
-        print('Code you entered is not numeric')
-    else:
-        condition = False
-        user_menu()
+def val_len_id():
+    condition = True
+    while condition:
+        try:
+            global user_id
+            user_id = input('Please enter ID: ')
+            int(user_id)
+            if len(user_id) != 11:
+                raise UserWarning
+        except UserWarning:
+            if len(user_id) < 11:
+                print('Code is too short')
+            elif len(user_id) > 11:
+                print('Code is too long')
+        except:
+            print('Code you entered is not numeric')
+        else:
+            condition = False
+            user_menu()
+
+val_len_id()
