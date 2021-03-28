@@ -58,28 +58,23 @@ def get_data_by_id(idcode):
 
 def valid_id(idcode):
 
+    chk_1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1]
+    chk_2 = [3, 4, 5, 6, 7, 8, 9, 1, 2, 3]
 
-    # I astme kaal: 1 2 3 4 5 6 7 8 9 1
-    summ_id_1 = 1 * int(idcode[0]) + 2 * int(idcode[1]) + 3 * int(idcode[2]) + 4 * int(idcode[3]) + \
-                5 * int(idcode[4]) + 6 * int(idcode[5]) + 7 * int(idcode[6]) + 8 * int(idcode[7]) + \
-                9 * int(idcode[8]) + 1 * int(idcode[9])
-    rem_div_1 = summ_id_1 % 11
-    val_1 = summ_id_1 - 11 * (summ_id_1 // 11)
+    result = 0
+    for num in range(0, 10):
+        result += chk_1[num] * int(idcode[num])
 
-    # II astme kaal: 3 4 5 6 7 8 9 1 2 3
-    summ_id_2 = 3 * int(idcode[0]) + 4 * int(idcode[1]) + 5 * int(idcode[2]) + 6 * int(idcode[3]) + \
-                7 * int(idcode[4]) + 8 * int(idcode[5]) + 9 * int(idcode[6]) + 1 * int(idcode[7]) + \
-                2 * int(idcode[8]) + 3 * int(idcode[9])
-    rem_div_2 = summ_id_2 % 11
-    val_2 = summ_id_2 - 11 * (summ_id_2 // 11)
-
-    # Test
-    if rem_div_1 < 10 and rem_div_1 == int(idcode[10]) and val_1 == rem_div_1:
-        print('The code was validated!')
-    elif rem_div_2 == int(idcode[10]) and val_2 == rem_div_2 or rem_div_2 == 0:
-        print('The code was validated!')
+    if result % 11 != int(idcode[10]):
+        result = 0
+        for num in range(0, 10):
+            result += chk_2[num] * int(idcode[num])
+        if result == int(idcode[10]):
+            print('The code was validated!')
+        else:
+            print('The code did not pass validation!')
     else:
-        print('The code did not pass validation!')
+        print('The code was validated!')
 
     user_menu()
 
