@@ -44,7 +44,7 @@
 # a = [1, 2, 3, 4, 7, 9, 9]
 # c = {i:a.count(i) for i in a}
 # print(c)
-# print(max(c, key=c.get))
+# print(max(c, key = c.get))
 
 
 
