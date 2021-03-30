@@ -2,7 +2,7 @@
 # Hello, <Фамилия пользователя> <Имя пользователя>. Your age is: <возраст>
 
 # name, surname, age = input('Please enter your name, surname, and age. Use space separator: ').split()
-# print(surname.capitalize() + ' ' + name.capitalize() + '. Your age is: ' + age + '.')
+# print('Hello, 'surname.capitalize() + ' ' + name.capitalize() + '. Your age is: ' + age + '.')
 
 # 2 Напишите программу, которая находит длину гипотенузы для прямоугольного треугольника по двум катетам.
 # (с = sqrt(a * a  +  b * b))
