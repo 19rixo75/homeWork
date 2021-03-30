@@ -46,6 +46,21 @@
 # print(c)
 # print(max(c, key = c.get))
 
+# 7 *Сделайте так, чтобы число секунд отображалось в виде дни:часы:минуты:секунды.
+#
+#         Примеры:
+#         1234565 seconds = 14:6:56:5
+
+
+# user_sec = int(input('Введите количество секунд: '))
+# sec_id = user_sec % 60
+# min_id = user_sec // 60 % 60
+# hour_id = user_sec // 3600 % 24
+# day_id = user_sec // 3600 // 24
+# print(str(day_id) + ':' + str(hour_id) + ':' + str(min_id) + ':' + str(sec_id))
+
+
+
 
 
 
