@@ -1,7 +1,7 @@
 import pandas as pd
 
 df = pd.read_csv('csv_files/survey_results_public.csv')
-df = df[['Respondent',  'Hobbyist', 'Age', 'Country',  'CurrencyDesc', 'CurrencySymbol']]
+df = df[['Respondent',  'Hobbyist', 'Age', 'Country',  'CurrencyDesc']]
 
 def user_menu():
     user_choice = input('Please choose:\n1. Средний возраст пользователей\n2. Группирует по хобби/профессионал\n'
